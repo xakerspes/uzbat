@@ -4,7 +4,7 @@ import numpy as np
 class A:
     def __init__(self, freq: str):
         self.freq = freq
-        a = pd.read_excel('workbook_2.xlsx')
+        a = pd.read_excel('workbook.xlsx')
         self.df = pd.DataFrame(a)
         self.result = None
  
