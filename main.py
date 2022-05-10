@@ -29,7 +29,7 @@ from  tkinter import *
 import os
 root = Tk()
 root.title("Программа для получения отчётов от расходомеров")
-root.geometry("500x200")
+root.geometry("600x200")
 asd = None
 value_1 = StringVar()
 value_2 = StringVar()
