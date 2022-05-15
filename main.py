@@ -1,7 +1,6 @@
 import pandas as pd
 import datetime
 import numpy as np
-
 ###################################################################################################################
 from  tkinter import *
 import os
@@ -23,6 +22,7 @@ def soatlik():
     try:
         
         data = pd.read_excel('ExChange.xls')
+        
         df = pd.DataFrame(data)
         df['Дата_и_Время'] = pd.to_datetime(df['Дата_и_Время'])
         df[df.columns[1:]] = df[df.columns[1:]].apply(np.diff, axis = 0)
@@ -102,4 +102,3 @@ b_1.pack()
 b_2.pack()
 l_2.pack()
 root.mainloop()
-
