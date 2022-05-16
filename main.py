@@ -21,7 +21,7 @@ def soatlik():
     
     try:
         
-        data = pd.read_excel('ExChange.xls')
+        data = pd.read_excel('d:\\uzbat\\ExChange.xls')
         
         df = pd.DataFrame(data)
         df['Дата_и_Время'] = pd.to_datetime(df['Дата_и_Время'])
@@ -50,7 +50,7 @@ def kunlik():
     try:
         freq='24H'
         col_names = []
-        df = pd.DataFrame(pd.read_excel('ExChange.xls'))
+        df = pd.DataFrame(pd.read_excel('d:\\uzbat\\ExChange.xls'))
         df['Дата_и_Время'] = pd.to_datetime(df['Дата_и_Время'])
         df = df.groupby(pd.Grouper(key="Дата_и_Время", freq=freq)).agg(['min', 'max'])
         for i in range(0,len(df.columns)-1,2):
@@ -64,15 +64,18 @@ def kunlik():
         df.to_excel('output.xlsx')     
     
         l_2["text"] = "Дневной отчет сохранен.   Путь к файлу:   " + os.path.abspath('') + '\\'  + 'output.xlsx'
-    except:
-        print('Error')
+    except Exception as e:
+        print(
+            type(e).__name__,  # TypeError
+            __file__,  # /tmp/example.py
+            e.__traceback__.tb_lineno )    
         
 def oylik():
     
     try:
         freq='1M'
         col_names = []
-        df = pd.DataFrame(pd.read_excel('ExChange.xls'))
+        df = pd.DataFrame(pd.read_excel('d:\\uzbat\\ExChange.xls'))
         df['Дата_и_Время'] = pd.to_datetime(df['Дата_и_Время'])
         df = df.groupby(pd.Grouper(key="Дата_и_Время", freq=freq)).agg(['min', 'max'])
         for i in range(0,len(df.columns)-1,2):
@@ -86,8 +89,11 @@ def oylik():
         df.to_excel('output.xlsx')
         
         l_2["text"] = "Месячный отчет сохранен.   Путь к файлу:   " + os.path.abspath('') + '\\' + 'output.xlsx'
-    except:
-        print('Error')
+    except Exception as e:
+        print(
+            type(e).__name__,  # TypeError
+            __file__,  # /tmp/example.py
+            e.__traceback__.tb_lineno )    
     
 l=Label(text="Получить отчёт:")
 e1=Entry(textvariable=value_1)
@@ -102,3 +108,4 @@ b_1.pack()
 b_2.pack()
 l_2.pack()
 root.mainloop()
+
